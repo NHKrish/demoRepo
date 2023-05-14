@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="ba7c6deb-fd50-40a5-bc76-5b1807c8e937" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<api-gateway:autodiscovery apiId="${autoDiscovery}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="b54dda48-ace3-4868-9505-5c778a7aab9b" flowRef="reqdemoFlow" />
+	<flow name="reqdemoFlow" doc:id="693f6ffc-9424-4b46-9256-2b7859b162f1" >
+		<http:listener doc:name="Listener" doc:id="436f4ea1-c64f-45e2-8a08-55079495a418" config-ref="HTTP_Listener_config" path="/test"/>
+		<logger level="INFO" doc:name="Logger" doc:id="5a953b5a-a595-4f5d-ba74-123ea5a71ff2" />
+		<ee:transform doc:name="Transform Message" doc:id="f9710a43-b24a-4b3d-a400-5b32bd912657" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{"message":
+[
+  {
+    "id": 1,
+    "employee_name": "Tiger Nixon",
+    "employee_salary": 320800,
+    "employee_age": 61,
+    "profile_image": ""
+  },
+  {
+    "id": 2,
+    "employee_name": "Garrett Winters",
+    "employee_salary": 170750,
+    "employee_age": 63,
+    "profile_image": ""
+  },
+  {
+    "id": 3,
+    "employee_name": "Ashton Cox",
+    "employee_salary": 86000,
+    "employee_age": 66,
+    "profile_image": ""
+  },
+  {
+    "id": 4,
+    "employee_name": "Cedric Kelly",
+    "employee_salary": 433060,
+    "employee_age": 22,
+    "profile_image": ""
+  },
+  {
+    "id": 5,
+    "employee_name": "Airi Satou",
+    "employee_salary": 162700,
+    "employee_age": 33,
+    "profile_image": ""
+  },
+  {
+    "id": 6,
+    "employee_name": "Brielle Williamson",
+    "employee_salary": 372000,
+    "employee_age": 61,
+    "profile_image": ""
+  },
+  {
+    "id": 7,
+    "employee_name": "Herrod Chandler",
+    "employee_salary": 137500,
+    "employee_age": 59,
+    "profile_image": ""
+  },
+  {
+    "id": 8,
+    "employee_name": "Rhona Davidson",
+    "employee_salary": 327900,
+    "employee_age": 55,
+    "profile_image": ""
+  },
+  {
+    "id": 9,
+    "employee_name": "Colleen Hurst",
+    "employee_salary": 205500,
+    "employee_age": 39,
+    "profile_image": ""
+  },
+  {
+    "id": 10,
+    "employee_name": "Sonya Frost",
+    "employee_salary": 103600,
+    "employee_age": 23,
+    "profile_image": ""
+  },
+  {
+    "id": 11,
+    "employee_name": "Jena Gaines",
+    "employee_salary": 90560,
+    "employee_age": 30,
+    "profile_image": ""
+  },
+  {
+    "id": 12,
+    "employee_name": "Quinn Flynn",
+    "employee_salary": 342000,
+    "employee_age": 22,
+    "profile_image": ""
+  },
+  {
+    "id": 13,
+    "employee_name": "Charde Marshall",
+    "employee_salary": 470600,
+    "employee_age": 36,
+    "profile_image": ""
+  },
+  {
+    "id": 14,
+    "employee_name": "Haley Kennedy",
+    "employee_salary": 313500,
+    "employee_age": 43,
+    "profile_image": ""
+  },
+  {
+    "id": 15,
+    "employee_name": "Tatyana Fitzpatrick",
+    "employee_salary": 385750,
+    "employee_age": 19,
+    "profile_image": ""
+  },
+  {
+    "id": 16,
+    "employee_name": "Michael Silva",
+    "employee_salary": 198500,
+    "employee_age": 66,
+    "profile_image": ""
+  },
+  {
+    "id": 17,
+    "employee_name": "Paul Byrd",
+    "employee_salary": 725000,
+    "employee_age": 64,
+    "profile_image": ""
+  },
+  {
+    "id": 18,
+    "employee_name": "Gloria Little",
+    "employee_salary": 237500,
+    "employee_age": 59,
+    "profile_image": ""
+  },
+  {
+    "id": 19,
+    "employee_name": "Bradley Greer",
+    "employee_salary": 132000,
+    "employee_age": 41,
+    "profile_image": ""
+  },
+  {
+    "id": 20,
+    "employee_name": "Dai Rios",
+    "employee_salary": 217500,
+    "employee_age": 35,
+    "profile_image": ""
+  },
+  {
+    "id": 21,
+    "employee_name": "Jenette Caldwell",
+    "employee_salary": 345000,
+    "employee_age": 30,
+    "profile_image": ""
+  },
+  {
+    "id": 22,
+    "employee_name": "Yuri Berry",
+    "employee_salary": 675000,
+    "employee_age": 40,
+    "profile_image": ""
+  },
+  {
+    "id": 23,
+    "employee_name": "Caesar Vance",
+    "employee_salary": 106450,
+    "employee_age": 21,
+    "profile_image": ""
+  },
+  {
+    "id": 24,
+    "employee_name": "Doris Wilder",
+    "employee_salary": 85600,
+    "employee_age": 23,
+    "profile_image": ""
+  }
+]}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<ee:transform doc:name="Transform Message" doc:id="7278a29c-2d40-48a3-a90e-f904b2a3607f" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+
+payload.message]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="5b4a24ff-e318-4365-9db0-e90981e328c3" />
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="e7e306e5-a53c-47b0-885f-bd4b026d368f" type="HTTP:CONNECTIVITY">
+				<logger level="INFO" doc:name="Logger" doc:id="c38ee795-ac76-4f3e-8ada-90933b890da9" />
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+</mule>
